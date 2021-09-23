@@ -65,13 +65,18 @@ class FizzBuzzThree
         return $result;
     }
 
-    public function print_result(): int
+
+    public function gather_result_string(): string
     {
         $main_str = $this->result_string();
         $count_str = $this->count_string();
-        return print($main_str . "\n" . $count_str . "\n");
+        return $main_str . "\n" . $count_str . "\n";
+    }
+
+    public static function print_result(int $val1, int $val2): int
+    {
+        return print((new FizzBuzzThree($val1, $val2))->gather_result_string());
     }
 }
 
-$fb = new FizzBuzzThree(1, 20);
-$fb->print_result();
+FizzBuzzThree::print_result(1, 20);
