@@ -66,7 +66,7 @@ final class FizzBuzzThree
     }
 
 
-    public function gather_resultString(): string
+    public function gatherResultString(): string
     {
         $main_str = $this->resultString();
         $count_str = $this->countString();
@@ -75,7 +75,7 @@ final class FizzBuzzThree
 
     public static function printResult(int $start, int $stop): int
     {
-        return print((new self($start, $stop))->gather_resultString());
+        return print((new self($start, $stop))->gatherResultString());
     }
 }
 
