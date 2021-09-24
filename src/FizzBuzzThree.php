@@ -73,9 +73,9 @@ class FizzBuzzThree
         return $main_str . "\n" . $count_str . "\n";
     }
 
-    public static function print_result(int $val1, int $val2): int
+    public static function print_result(int $start, int $stop): int
     {
-        return print((new FizzBuzzThree($val1, $val2))->gather_result_string());
+        return print((new FizzBuzzThree($start, $stop))->gather_result_string());
     }
 }
 
