@@ -1,7 +1,8 @@
 <?php
 
+declare(strict_types=1);
 
-class FizzBuzzThree
+final class FizzBuzzThree
 {
     // int > 0
     private $start;
@@ -15,9 +16,8 @@ class FizzBuzzThree
         $this->start = $start;
         $this->stop = $stop;
     }
-
-
-    public function get_single_result(int $num): string
+    
+    public function getSingleResult(int $num): string
     {
         if (preg_match("/3/", strval($num))) {
             $this->count['lucky'] += 1;
@@ -42,12 +42,12 @@ class FizzBuzzThree
         return $return_val;
     }
 
-    public function count_total(): int
+    public function countTotal(): int
     {
         return array_sum($this->count);
     }
 
-    private function count_string(): string
+    private function countString(): string
     {
         $count_str = "";
         foreach ($this->count as $key => $val) {
@@ -56,27 +56,27 @@ class FizzBuzzThree
         return $count_str;
     }
 
-    public function result_string(): string
+    public function resultString(): string
     {
         $result = "";
         for ($i = $this->start; $i < $this->stop + 1; $i++) {
-            $result .= $this->get_single_result($i);
+            $result .= $this->getSingleResult($i);
         }
         return $result;
     }
 
 
-    public function gather_result_string(): string
+    public function gather_resultString(): string
     {
-        $main_str = $this->result_string();
-        $count_str = $this->count_string();
+        $main_str = $this->resultString();
+        $count_str = $this->countString();
         return $main_str . "\n" . $count_str . "\n";
     }
 
-    public static function print_result(int $start, int $stop): int
+    public static function printResult(int $start, int $stop): int
     {
-        return print((new FizzBuzzThree($start, $stop))->gather_result_string());
+        return print((new self($start, $stop))->gather_resultString());
     }
 }
 
-FizzBuzzThree::print_result(1, 20);
+FizzBuzzThree::printResult(1, 20);

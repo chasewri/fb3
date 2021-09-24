@@ -6,75 +6,75 @@ use PHPUnit\Framework\TestCase;
 
 final class FizzBuzzThreeTest extends TestCase
 {
-    public function test_correct_num_total(): void
+    public function testCorrectNumTotal(): void
     {
         $fb = new FizzBuzzThree(1, 100);
-        $fb_str = $fb->result_string();
+        $fb_str = $fb->resultString();
         $capture_arr = explode(" ", trim($fb_str));
         $this->assertSame(100, count($capture_arr));
     }
 
-    public function test_correct_number_all_counts(): void
+    public function testCorrectNumberAllCounts(): void
     {
         $fb = new FizzBuzzThree(1, 100);
-        $fb->result_string();
-        $this->assertSame(100, $fb->count_total());
+        $fb->resultString();
+        $this->assertSame(100, $fb->countTotal());
     }
 
-    public function test_multiples_of_three_assigned_fizz(): void
+    public function testMultiplesOfThree(): void
     {
         $fb = new FizzBuzzThree(1, 100);
         $test_arr = range(3, 100, 3);
         foreach ($test_arr as $key => $val) {
             $three_check = preg_match("/3/", strval($val));
             if ($val % 5 !== 0 && !$three_check) {
-                $this->assertSame("fizz", trim($fb->get_single_result($val)));
+                $this->assertSame("fizz", trim($fb->getSingleResult($val)));
             }
         }
     }
 
-    public function test_multiples_of_five_assigned_buzz(): void
+    public function testMultiplesOfFive(): void
     {
         $fb = new FizzBuzzThree(1, 100);
         $test_arr = range(5, 100, 5);
         foreach ($test_arr as $key => $val) {
             $three_check = preg_match("/3/", strval($val));
             if ($val % 3 !== 0 && !$three_check) {
-                $this->assertSame("buzz", trim($fb->get_single_result($val)));
+                $this->assertSame("buzz", trim($fb->getSingleResult($val)));
             }
         }
     }
 
-    public function test_multiples_of_15_assigned_fizzbuzz(): void
+    public function testMultiplesOfFifteen(): void
     {
         $fb = new FizzBuzzThree(1, 100);
         $test_arr = range(15, 100, 15);
         foreach ($test_arr as $key => $val) {
             $three_check = preg_match("/3/", strval($val));
             if (!$three_check) {
-                $this->assertSame("fizzbuzz", trim($fb->get_single_result($val)));
+                $this->assertSame("fizzbuzz", trim($fb->getSingleResult($val)));
             }
         }
     }
 
-    public function test_return_integers_and_lucky(): void
+    public function testReturnIntegersAndLucky(): void
     {
         $fb = new FizzBuzzThree(1, 100);
         $test_arr = range(1, 100);
         foreach ($test_arr as $key => $val) {
             $three_check = preg_match("/3/", strval($val));
             if ($three_check) {
-                $this->assertSame("lucky", trim($fb->get_single_result($val)));
+                $this->assertSame("lucky", trim($fb->getSingleResult($val)));
             } else if ($val % 3 !== 0 && $val % 5 !== 0) {
-                $this->assertGreaterThan(0, (int)trim($fb->get_single_result($val)));
+                $this->assertGreaterThan(0, (int)trim($fb->getSingleResult($val)));
             }
         }
     }
 
-    public function test_reverse(): void
+    public function testReverse(): void
     {
         $fb = new FizzBuzzThree(1, 100);
-        $fb_str = $fb->result_string();
+        $fb_str = $fb->resultString();
         $capture_arr = explode(" ", trim($fb_str));
         $test_arr = range(1, 100);
         foreach ($capture_arr as $key => $val) {
