@@ -13,10 +13,25 @@ final class FizzBuzzThree
 
     public function __construct(int $start, int $stop)
     {
+        $this->setStart($start);
+        $this->setStop($stop);
+    }
+
+    private function setStart(int $start): void
+    {
+        if ($start <= 0) {
+            throw new Exception('Start parameter must be greater than zero');
+        }
         $this->start = $start;
+    }
+
+    private function setStop(int $stop): void {
+        if ($stop < $this->start) {
+            throw new Exception('Stop parameter must be equal to or great than start parameter');
+        }
         $this->stop = $stop;
     }
-    
+
     public function getSingleResult(int $num): string
     {
         if (preg_match("/3/", strval($num))) {
